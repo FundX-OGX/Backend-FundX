@@ -8,15 +8,20 @@ import {
   HttpStatus,
   BadRequestException,
 } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CampaignsService } from './campaigns.service';
 import { CreateCampaignDto } from './dto/create-campaign.dto';
 
+@ApiTags('Campaigns')
 @Controller()
 export class CampaignsController {
   constructor(private readonly campaignsService: CampaignsService) {}
 
   @Post('create-campaign')
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Create a new campaign' })
+  @ApiResponse({ status: 200, description: 'Campaign created successfully' })
+  @ApiResponse({ status: 400, description: 'Bad request' })
   async createCampaign(@Body() createCampaignDto: CreateCampaignDto) {
     try {
       return await this.campaignsService.createCampaign(createCampaignDto);
@@ -29,6 +34,8 @@ export class CampaignsController {
   }
 
   @Get('campaigns')
+  @ApiOperation({ summary: 'Get list of campaigns' })
+  @ApiResponse({ status: 200, description: 'List of campaigns' })
   async getCampaigns(
     @Query('limit') limit?: string,
     @Query('offset') offset?: string,
