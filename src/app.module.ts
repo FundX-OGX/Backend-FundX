@@ -7,6 +7,7 @@ import { ImagesModule } from './images/images.module';
 import { MilestonesModule } from './milestones/milestones.module';
 import { ContributionsModule } from './contributions/contributions.module';
 import { TiersModule } from './tiers/tiers.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { TiersModule } from './tiers/tiers.module';
     MilestonesModule,
     ContributionsModule,
     TiersModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
