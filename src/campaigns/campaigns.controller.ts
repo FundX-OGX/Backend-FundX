@@ -28,7 +28,7 @@ export class CampaignsController {
     } catch (error) {
       return {
         is_success: false,
-        error: error.message,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -47,7 +47,7 @@ export class CampaignsController {
     } catch (error) {
       return {
         is_success: false,
-        error: error.message,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -62,7 +62,7 @@ export class CampaignsController {
     } catch (error) {
       return {
         is_success: false,
-        error: error.message,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -75,11 +75,14 @@ export class CampaignsController {
     try {
       const limitNum = limit ? parseInt(limit, 10) : 10;
       const offsetNum = offset ? parseInt(offset, 10) : 0;
-      return await this.campaignsService.getVotingCampaigns(limitNum, offsetNum);
+      return await this.campaignsService.getVotingCampaigns(
+        limitNum,
+        offsetNum,
+      );
     } catch (error) {
       return {
         is_success: false,
-        error: error.message,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -94,9 +97,8 @@ export class CampaignsController {
     } catch (error) {
       return {
         is_success: false,
-        error: error.message,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
 }
-

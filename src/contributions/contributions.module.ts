@@ -8,4 +8,3 @@ import { ContributionsService } from './contributions.service';
   exports: [ContributionsService],
 })
 export class ContributionsModule {}
-

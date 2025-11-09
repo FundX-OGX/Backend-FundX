@@ -17,9 +17,13 @@ export class ContributionsController {
 
   @Post('create-contribution')
   @HttpCode(HttpStatus.OK)
-  async createContribution(@Body() createContributionDto: CreateContributionDto) {
+  async createContribution(
+    @Body() createContributionDto: CreateContributionDto,
+  ) {
     try {
-      return await this.contributionsService.createContribution(createContributionDto);
+      return await this.contributionsService.createContribution(
+        createContributionDto,
+      );
     } catch (error) {
       return {
         is_success: false,
@@ -35,7 +39,9 @@ export class ContributionsController {
   ) {
     if (address) {
       try {
-        return await this.contributionsService.getContributionsByAddress(address);
+        return await this.contributionsService.getContributionsByAddress(
+          address,
+        );
       } catch (error) {
         return {
           is_success: false,
@@ -46,7 +52,9 @@ export class ContributionsController {
 
     if (campaignId) {
       try {
-        return await this.contributionsService.getAddressesByCampaign(campaignId);
+        return await this.contributionsService.getAddressesByCampaign(
+          campaignId,
+        );
       } catch (error) {
         return {
           is_success: false,
@@ -58,4 +66,3 @@ export class ContributionsController {
     throw new BadRequestException('Missing address or campaign_id parameter');
   }
 }
-

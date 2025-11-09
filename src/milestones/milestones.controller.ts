@@ -59,7 +59,10 @@ export class MilestonesController {
     @Param('milestone_id') milestoneId: string,
   ) {
     try {
-      return await this.milestonesService.updateIsClaimed(objectId, milestoneId);
+      return await this.milestonesService.updateIsClaimed(
+        objectId,
+        milestoneId,
+      );
     } catch (error) {
       return {
         is_success: false,
@@ -83,4 +86,3 @@ export class MilestonesController {
     }
   }
 }
-

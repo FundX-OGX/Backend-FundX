@@ -8,4 +8,3 @@ import { ImagesService } from './images.service';
   exports: [ImagesService],
 })
 export class ImagesModule {}
-

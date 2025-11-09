@@ -13,4 +13,3 @@ export class CreateImageDto {
   @IsNotEmpty()
   type: string;
 }
-

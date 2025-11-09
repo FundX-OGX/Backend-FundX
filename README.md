@@ -89,6 +89,21 @@ pnpm run build
 pnpm run start:prod
 ```
 
+## 🚀 Deployment
+
+### Deploy to Render Cloud
+
+1. **Connect Repository** to Render
+2. **Set Environment Variables:**
+   - `NODE_ENV=production`
+   - `PORT=10000` (Render auto-sets this)
+3. **Build Settings:**
+   - Build Command: `pnpm install && pnpm run build`
+   - Start Command: `pnpm run start:prod`
+4. **Health Check Path:** `/health`
+
+Xem [DEPLOY.md](./DEPLOY.md) để biết chi tiết.
+
 ## 🔄 Database
 
 Database logic hiện tại được đánh dấu `TODO` và sẽ được implement với Walrus database.

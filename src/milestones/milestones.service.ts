@@ -11,7 +11,8 @@ export class MilestonesService {
   async createMilestone(createMilestoneDto: CreateMilestoneDto) {
     const now = new Date();
     const votingEnd = new Date(
-      now.getTime() + createMilestoneDto.votingDurationDays * 24 * 60 * 60 * 1000,
+      now.getTime() +
+        createMilestoneDto.votingDurationDays * 24 * 60 * 60 * 1000,
     );
 
     const milestone = {
@@ -53,11 +54,11 @@ export class MilestonesService {
   ) {
     // TODO: Check if milestone exists and status is "in-voting"
     // const milestone = await this.databaseService.getMilestone(objectId, milestoneId);
-    
+
     // if (!milestone) {
     //   throw new BadRequestException('Milestone not found');
     // }
-    
+
     // if (milestone.status !== 'in-voting') {
     //   return {
     //     is_success: false,
@@ -84,11 +85,11 @@ export class MilestonesService {
   async updateIsClaimed(objectId: string, milestoneId: string) {
     // TODO: Check if milestone exists and status is "approved"
     // const milestone = await this.databaseService.getMilestone(objectId, milestoneId);
-    
+
     // if (!milestone) {
     //   throw new BadRequestException('Milestone not found');
     // }
-    
+
     // if (milestone.status !== 'approved') {
     //   return {
     //     is_success: false,
@@ -122,4 +123,3 @@ export class MilestonesService {
     };
   }
 }
-

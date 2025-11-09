@@ -50,7 +50,7 @@ export class ContributionsService {
   async getContributionsByAddress(address: string) {
     // TODO: Fetch contributions from Walrus
     // const contributions = await this.databaseService.getContributionsByAddress(address);
-    
+
     // TODO: Group by campaign and calculate totals
     // TODO: Get campaign details for each contribution
     // TODO: Get first image for each campaign
@@ -69,7 +69,7 @@ export class ContributionsService {
   async getAddressesByCampaign(campaignId: string) {
     // TODO: Fetch contributions from Walrus
     // const contributions = await this.databaseService.getContributionsByCampaignId(campaignId);
-    
+
     // TODO: Extract unique wallet addresses
 
     return {
@@ -81,4 +81,3 @@ export class ContributionsService {
     };
   }
 }
-

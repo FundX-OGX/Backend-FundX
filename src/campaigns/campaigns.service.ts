@@ -9,7 +9,9 @@ export class CampaignsService {
    */
   async createCampaign(createCampaignDto: CreateCampaignDto) {
     const now = new Date();
-    const endAt = new Date(now.getTime() + createCampaignDto.duration * 24 * 60 * 60 * 1000);
+    const endAt = new Date(
+      now.getTime() + createCampaignDto.duration * 24 * 60 * 60 * 1000,
+    );
 
     const campaign = {
       blob_id: createCampaignDto.blobId,
@@ -48,7 +50,7 @@ export class CampaignsService {
   async getCampaigns(limit: number = 10, offset: number = 0) {
     // TODO: Fetch from Walrus database
     // const campaigns = await this.databaseService.getCampaigns(limit, offset);
-    
+
     // TODO: Enrich campaigns with images and contributions
     // for each campaign:
     //   - Get images: await this.databaseService.getImagesByCampaignId(campaignId)
@@ -66,10 +68,10 @@ export class CampaignsService {
    * Get campaigns by creator address
    * TODO: Implement database logic with Walrus
    */
-  async getCampaignsByCreator(creatorAddress: string) {
+  async getCampaignsByCreator(_creatorAddress: string) {
     // TODO: Fetch from Walrus database
     // const campaigns = await this.databaseService.getCampaignsByCreator(creatorAddress);
-    
+
     // TODO: Enrich with images, contributions, and milestones
 
     return {
@@ -102,7 +104,7 @@ export class CampaignsService {
   async getCampaignById(objectId: string) {
     // TODO: Fetch from Walrus database
     // const campaign = await this.databaseService.getCampaignByObjectId(objectId);
-    
+
     if (!objectId) {
       throw new NotFoundException(`Campaign with id ${objectId} not found`);
     }
@@ -116,4 +118,3 @@ export class CampaignsService {
     };
   }
 }
-

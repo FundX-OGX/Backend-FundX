@@ -1,4 +1,10 @@
-import { IsString, IsNumber, IsArray, IsNotEmpty, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsArray,
+  IsNotEmpty,
+  IsOptional,
+} from 'class-validator';
 
 export class CreateMilestoneDto {
   @IsString()
@@ -54,4 +60,3 @@ export class CreateMilestoneDto {
   @IsOptional()
   informationId?: string;
 }
-

@@ -49,4 +49,3 @@ export class CreateCampaignDto {
   @IsNotEmpty()
   category: string;
 }
-

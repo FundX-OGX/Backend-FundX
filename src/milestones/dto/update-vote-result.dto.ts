@@ -5,4 +5,3 @@ export class UpdateVoteResultDto {
   @IsNotEmpty()
   voteResult: number;
 }
-

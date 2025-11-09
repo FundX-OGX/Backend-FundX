@@ -24,22 +24,26 @@ export class HttpExceptionFilter implements ExceptionFilter {
         ? exception.getResponse()
         : 'Internal server error';
 
+    const messageObj = typeof message === 'object' ? message : null;
+    const errorMessage =
+      typeof message === 'string'
+        ? message
+        : Array.isArray(messageObj?.message)
+        ? messageObj.message.join(', ')
+        : messageObj?.message || 'An error occurred';
+
     const errorResponse = {
       is_success: false,
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
       method: request.method,
-      error:
-        typeof message === 'string'
-          ? message
-          : (message as any).message || 'An error occurred',
-      ...(typeof message === 'object' && (message as any).message
-        ? { details: (message as any).message }
+      error: errorMessage,
+      ...(messageObj && Array.isArray(messageObj.message)
+        ? { details: messageObj.message }
         : {}),
     };
 
     response.status(status).json(errorResponse);
   }
 }
-

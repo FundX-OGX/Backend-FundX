@@ -34,7 +34,9 @@ async function bootstrap() {
   // Swagger/OpenAPI configuration
   const config = new DocumentBuilder()
     .setTitle('FundX Backend API')
-    .setDescription('Backend API for FundX crowdfunding platform built with NestJS')
+    .setDescription(
+      'Backend API for FundX crowdfunding platform built with NestJS',
+    )
     .setVersion('1.0')
     .addTag('Campaigns', 'Campaign management endpoints')
     .addTag('Images', 'Image upload endpoints')
