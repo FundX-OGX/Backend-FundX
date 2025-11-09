@@ -8,4 +8,3 @@ import { CampaignsService } from './campaigns.service';
   exports: [CampaignsService],
 })
 export class CampaignsModule {}
-

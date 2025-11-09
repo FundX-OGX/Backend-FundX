@@ -8,4 +8,3 @@ import { TiersService } from './tiers.service';
   exports: [TiersService],
 })
 export class TiersModule {}
-

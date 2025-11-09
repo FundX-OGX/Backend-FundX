@@ -1,98 +1,509 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚀 FundX Backend API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<div align="center">
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+**A decentralized crowdfunding platform backend built with NestJS**
 
-## Description
+[![NestJS](https://img.shields.io/badge/NestJS-11.0-E0234E?logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-UNLICENSED-red)]()
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[API Documentation](#-api-documentation) • [Quick Start](#-quick-start) • [Architecture](#-architecture) • [Deployment](#-deployment)
 
-## Project setup
+</div>
 
-```bash
-$ pnpm install
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Architecture](#-architecture)
+- [Quick Start](#-quick-start)
+- [API Documentation](#-api-documentation)
+- [Project Structure](#-project-structure)
+- [Development](#-development)
+- [Deployment](#-deployment)
+- [Contributing](#-contributing)
+
+---
+
+## 🎯 Overview
+
+FundX is a next-generation crowdfunding platform that leverages blockchain technology to enable transparent, secure, and decentralized fundraising. This backend API powers the entire platform, providing robust endpoints for campaign management, milestone tracking, contribution processing, and more.
+
+### Key Highlights
+
+- 🔐 **Secure & Scalable** - Built with enterprise-grade NestJS framework
+- 📊 **Real-time Tracking** - Monitor campaigns, milestones, and contributions
+- 🎯 **Milestone-based Funding** - Structured funding with voting mechanisms
+- 💰 **Multi-tier Contributions** - Flexible contribution tiers and rewards
+- 📱 **RESTful API** - Clean, well-documented REST endpoints
+- 🚀 **Production Ready** - Error handling, logging, and monitoring built-in
+
+---
+
+## ✨ Features
+
+### Core Functionality
+
+- **Campaign Management**
+  - Create and manage fundraising campaigns
+  - Track campaign progress and funding goals
+  - Filter campaigns by creator, status, and category
+  - Support for multiple currencies
+
+- **Milestone System**
+  - Create milestones with deliverables
+  - Voting mechanism for milestone approval
+  - Track milestone completion and claims
+  - Timeline management
+
+- **Contribution Processing**
+  - Record blockchain transactions
+  - Track contributions by wallet address
+  - Automatic campaign amount updates
+  - Multi-tier contribution system
+
+- **Image Management**
+  - Upload campaign images
+  - Support for multiple image types
+  - Image metadata tracking
+
+- **Tier System**
+  - Define contribution tiers
+  - Set limits and track current usage
+  - Tier-based rewards
+
+### Technical Features
+
+- ✅ **Input Validation** - Comprehensive DTO validation with class-validator
+- ✅ **Error Handling** - Global exception filter with consistent error responses
+- ✅ **Request Logging** - Detailed HTTP request/response logging
+- ✅ **API Documentation** - Interactive Swagger/OpenAPI documentation with full schema
+- ✅ **Health Monitoring** - Health check endpoints for monitoring
+- ✅ **CORS Support** - Configured for cross-origin requests
+- ✅ **Type Safety** - Full TypeScript implementation
+- ✅ **Database Abstraction** - Interface-based database layer for easy swapping
+- ✅ **Walrus Integration** - Decentralized storage with collection management
+
+---
+
+## 🛠 Tech Stack
+
+### Core
+
+- **[NestJS](https://nestjs.com/)** - Progressive Node.js framework
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **[Express](https://expressjs.com/)** - Web framework (via NestJS)
+
+### Validation & Transformation
+
+- **[class-validator](https://github.com/typestack/class-validator)** - Decorator-based validation
+- **[class-transformer](https://github.com/typestack/class-transformer)** - Object transformation
+
+### Documentation
+
+- **[Swagger/OpenAPI](https://swagger.io/)** - API documentation
+- **[swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)** - Swagger UI
+
+### Database
+
+- **Walrus** - Decentralized storage protocol on Sui blockchain
+  - Collection-based storage architecture
+  - Blob ID indexing system
+  - HTTP API integration
+
+### Development Tools
+
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Jest** - Testing framework
+
+---
+
+## 🏗 Architecture
+
+### Module Structure
+
+The application follows NestJS modular architecture with clear separation of concerns:
+
+```
+┌─────────────────────────────────────────────────┐
+│              App Module                         │
+│  (Global Config, Exception Filters, Pipes)     │
+└─────────────────────────────────────────────────┘
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+    ┌───▼───┐   ┌───▼───┐   ┌───▼───┐
+    │Campaigns│  │Images │  │Milestones│
+    └────────┘   └───────┘   └─────────┘
+        │           │           │
+    ┌───▼───┐   ┌───▼───┐
+    │Contrib│   │ Tiers │
+    └───────┘   └───────┘
 ```
 
-## Compile and run the project
+### Data Flow
+
+1. **Request** → Controller (Validation via DTOs)
+2. **Controller** → Service (Business Logic)
+3. **Service** → Database Service (IDatabaseService interface)
+4. **Database Service** → Walrus (Decentralized Storage)
+5. **Response** ← Controller (Formatted Output)
+
+### Error Handling
+
+- Global exception filter catches all errors
+- Consistent error response format
+- Detailed error logging
+- HTTP status code mapping
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Node.js** >= 18.x
+- **pnpm** >= 8.x (or npm/yarn)
+
+### Installation
 
 ```bash
-# development
-$ pnpm run start
+# Clone the repository
+git clone <repository-url>
+cd backend-fund-x
 
-# watch mode
-$ pnpm run start:dev
+# Install dependencies
+pnpm install
 
-# production mode
-$ pnpm run start:prod
+# Copy environment file
+cp .env.example .env
+
+# Update .env with your configuration
+# PORT=3000
+# NODE_ENV=development
 ```
 
-## Run tests
+### Running the Application
 
 ```bash
-# unit tests
-$ pnpm run test
+# Development mode (with hot reload)
+pnpm run start:dev
 
-# e2e tests
-$ pnpm run test:e2e
+# Production mode
+pnpm run build
+pnpm run start:prod
 
-# test coverage
-$ pnpm run test:cov
+# Debug mode
+pnpm run start:debug
 ```
 
-## Deployment
+The API will be available at `http://localhost:3000`
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Verify Installation
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+# Health check
+curl http://localhost:3000/health
+
+# API documentation
+open http://localhost:3000/api/docs
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## 📚 API Documentation
 
-Check out a few resources that may come in handy when working with NestJS:
+### Interactive Documentation
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Visit the Swagger UI at `/api/docs` for interactive API documentation:
 
-## Support
+```
+http://localhost:3000/api/docs
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+The Swagger documentation includes:
+- ✅ **Complete API Schema** - All endpoints with request/response schemas
+- ✅ **Request Examples** - Sample payloads for all DTOs
+- ✅ **Response Examples** - Success and error response formats
+- ✅ **Parameter Documentation** - Query, path, and body parameters
+- ✅ **Try It Out** - Test endpoints directly from the UI
+- ✅ **Enum Values** - All possible values for enum fields
 
-## Stay in touch
+### Endpoint Overview
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### Campaigns
+- `POST /create-campaign` - Create a new campaign
+- `GET /campaigns` - List campaigns (with pagination)
+- `GET /campaigns/creator?creator=<address>` - Get campaigns by creator
+- `GET /voting-campaigns` - Get campaigns in voting phase
+- `GET /campaign?id=<objectId>` - Get campaign details
 
-## License
+#### Milestones
+- `POST /upload-milestone` - Create a milestone
+- `PUT /campaigns/:objectId/milestones/:milestoneId/vote-result` - Update vote
+- `PUT /campaigns/:objectId/milestones/:milestoneId/claimed` - Mark as claimed
+- `GET /milestones?id=<objectId>` - Get campaign milestones
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+#### Contributions
+- `POST /create-contribution` - Record a contribution
+- `GET /contributions?address=<wallet>` - Get contributions by address
+- `GET /contributions?campaign_id=<id>` - Get contributors for campaign
+
+#### Images
+- `POST /upload-image` - Upload campaign image
+
+#### Tiers
+- `POST /add-tier` - Add contribution tier
+
+#### Health
+- `GET /health` - Basic health check
+- `GET /health/detailed` - Detailed system status
+
+### Response Format
+
+All responses follow a consistent format:
+
+**Success:**
+```json
+{
+  "is_success": true,
+  "data": { ... }
+}
+```
+
+**Error:**
+```json
+{
+  "is_success": false,
+  "statusCode": 400,
+  "timestamp": "2025-11-09T...",
+  "path": "/endpoint",
+  "method": "POST",
+  "error": "Error message"
+}
+```
+
+For detailed API documentation, see [API_ENDPOINTS.md](./API_ENDPOINTS.md)
+
+---
+
+## 📁 Project Structure
+
+```
+backend-fund-x/
+├── src/
+│   ├── campaigns/              # Campaign management module
+│   │   ├── dto/                # Data Transfer Objects
+│   │   ├── campaigns.controller.ts
+│   │   ├── campaigns.service.ts
+│   │   └── campaigns.module.ts
+│   ├── images/                 # Image management module
+│   ├── milestones/             # Milestone management module
+│   ├── contributions/          # Contribution processing module
+│   ├── tiers/                  # Tier management module
+│   ├── health/                 # Health check module
+│   ├── database/              # Database abstraction layer
+│   │   ├── interfaces/        # IDatabaseService interface
+│   │   ├── walrus/            # Walrus implementation
+│   │   └── database.module.ts # Database module
+│   ├── common/                 # Shared utilities
+│   │   ├── filters/            # Exception filters
+│   │   └── interceptors/       # Request interceptors
+│   ├── app.module.ts           # Root module
+│   └── main.ts                 # Application entry point
+├── dist/                       # Compiled JavaScript (generated)
+├── test/                       # E2E tests
+├── .env.example                # Environment variables template
+├── render.yaml                 # Render deployment config
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+### Module Responsibilities
+
+- **Controllers** - Handle HTTP requests/responses, Swagger documentation
+- **Services** - Business logic implementation
+- **DTOs** - Data validation, transformation, and Swagger schema definitions
+- **Database** - Abstraction layer for data persistence (Walrus implementation)
+- **Modules** - Dependency injection and module configuration
+
+---
+
+## 💻 Development
+
+### Available Scripts
+
+```bash
+# Development
+pnpm run start:dev      # Start with hot reload
+pnpm run start:debug    # Start in debug mode
+
+# Building
+pnpm run build          # Compile TypeScript to JavaScript
+pnpm run start:prod     # Run production build
+
+# Code Quality
+pnpm run lint           # Run ESLint
+pnpm run format         # Format code with Prettier
+
+# Testing
+pnpm run test           # Run unit tests
+pnpm run test:watch     # Run tests in watch mode
+pnpm run test:cov       # Generate coverage report
+pnpm run test:e2e       # Run end-to-end tests
+```
+
+### Code Style
+
+- Follow TypeScript best practices
+- Use ESLint and Prettier configurations
+- Write descriptive commit messages
+- Add JSDoc comments for public APIs
+
+### Environment Variables
+
+```env
+# Server
+PORT=3000
+NODE_ENV=development
+
+# Walrus Database
+WALRUS_AGGREGATOR_URL=https://aggregator.walrus.space
+WALRUS_CAMPAIGNS_INDEX=<blob_id>      # Set after first campaign creation
+WALRUS_IMAGES_INDEX=<blob_id>         # Set after first image upload
+WALRUS_MILESTONES_INDEX=<blob_id>     # Set after first milestone creation
+WALRUS_CONTRIBUTIONS_INDEX=<blob_id>   # Set after first contribution
+WALRUS_TIERS_INDEX=<blob_id>          # Set after first tier creation
+```
+
+**Note:** Collection index blob IDs are automatically logged when data is first created. Copy the logged blob ID to the corresponding environment variable.
+
+---
+
+## 🚢 Deployment
+
+### Render Cloud
+
+The project includes a `render.yaml` configuration for easy deployment on Render.
+
+#### Quick Deploy
+
+1. **Connect Repository** to Render
+2. **Auto-detect** settings from `render.yaml` or configure manually:
+   - **Build Command:** `pnpm install && pnpm run build`
+   - **Start Command:** `pnpm run start:prod`
+   - **Health Check Path:** `/health`
+
+3. **Environment Variables:**
+   - `NODE_ENV=production`
+   - `PORT` (auto-set by Render)
+   - `WALRUS_AGGREGATOR_URL` - Walrus aggregator endpoint
+   - `WALRUS_*_INDEX` - Collection blob IDs (set after first data creation)
+
+#### Manual Configuration
+
+- **Runtime:** Node.js
+- **Build Command:** `pnpm install && pnpm run build`
+- **Start Command:** `pnpm run start:prod`
+- **Health Check:** `/health`
+
+### Post-Deployment
+
+After deployment, verify:
+
+```bash
+# Health check
+curl https://your-app.onrender.com/health
+
+# API docs
+open https://your-app.onrender.com/api/docs
+```
+
+### Production Checklist
+
+- [x] Environment variables configured
+- [x] Health check endpoint working
+- [x] API documentation accessible
+- [x] Error logging configured
+- [x] Database connection ready (Walrus integrated)
+- [ ] CORS settings updated for production domain
+- [ ] Walrus collection indexes configured
+
+---
+
+## 🔮 Roadmap
+
+### ✅ Completed
+
+- [x] **Walrus Database Integration** - Decentralized data storage with collection management
+- [x] **Swagger Documentation** - Complete API documentation with schemas and examples
+- [x] **Database Abstraction Layer** - Interface-based design for easy database swapping
+- [x] **Error Handling** - Global exception filter with consistent responses
+- [x] **Request Logging** - Comprehensive HTTP request/response logging
+- [x] **Input Validation** - DTO-based validation with class-validator
+
+### 🚧 In Progress
+
+- [ ] **Unit & E2E Tests** - Comprehensive test coverage
+
+### 📋 Coming Soon
+
+- [ ] **Authentication & Authorization** - JWT-based auth system
+- [ ] **Blockchain Integration** - Smart contract interactions
+- [ ] **WebSocket Support** - Real-time updates
+- [ ] **Rate Limiting** - API protection
+- [ ] **Caching Layer** - Performance optimization
+- [ ] **CI/CD Pipeline** - Automated deployment
+- [ ] **Database Migrations** - Schema versioning for Walrus collections
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these guidelines:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Write clear, self-documenting code
+- Add tests for new features
+- Update documentation as needed
+- Follow the existing code style
+- Ensure all tests pass before submitting
+
+---
+
+## 📄 License
+
+This project is UNLICENSED. All rights reserved.
+
+---
+
+## 📞 Support
+
+For questions, issues, or contributions:
+
+- Open an issue on GitHub
+- Contact the development team
+- Check the [API Documentation](./API_ENDPOINTS.md)
+
+---
+
+<div align="center">
+
+**Built with ❤️ for the Web3 community**
+
+[Back to Top](#-fundx-backend-api)
+
+</div>
