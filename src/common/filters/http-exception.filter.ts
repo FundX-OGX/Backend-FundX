@@ -24,13 +24,19 @@ export class HttpExceptionFilter implements ExceptionFilter {
         ? exception.getResponse()
         : 'Internal server error';
 
-    const messageObj = typeof message === 'object' ? message : null;
+    interface ErrorMessage {
+      message?: string | string[];
+      [key: string]: unknown;
+    }
+
+    const messageObj =
+      typeof message === 'object' ? (message as ErrorMessage) : null;
     const errorMessage =
       typeof message === 'string'
         ? message
-        : Array.isArray(messageObj?.message)
+        : messageObj && Array.isArray(messageObj.message)
         ? messageObj.message.join(', ')
-        : messageObj?.message || 'An error occurred';
+        : (messageObj?.message as string) || 'An error occurred';
 
     const errorResponse = {
       is_success: false,
