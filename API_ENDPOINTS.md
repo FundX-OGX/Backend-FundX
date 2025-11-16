@@ -147,28 +147,42 @@ http://localhost:3000
 ### 💰 Contributions
 
 #### Create Contribution
-- **POST** `/create-contribution`
+- **POST** `/contributions`
 - **Body:**
 ```json
 {
-  "campaignId": "string",
+  "campaignId": "string (optional)",
+  "eventId": "string (optional)",
   "walletAddress": "string",
   "amount": 100,
   "txHash": "string",
-  "tierType": "string",
   "currency": "USD"
 }
 ```
 
-#### Get Contributions by Address
-- **GET** `/contributions?address=0x123...`
-- **Query Params:**
+#### Get All Contributions
+- **GET** `/contributions`
+
+#### Get Contributions by Wallet Address
+- **GET** `/contributions/wallet/:address`
+- **Params:**
   - `address` (required) - Wallet address
 
-#### Get Addresses by Campaign
-- **GET** `/contributions?campaign_id=test123`
-- **Query Params:**
-  - `campaign_id` (required) - Campaign ID
+#### Get Contributions by Campaign ID
+- **GET** `/contributions/campaign/:id`
+- **Params:**
+  - `id` (required) - Campaign ID
+
+#### Get Contributions by Event ID
+- **GET** `/contributions/event/:id`
+- **Params:**
+  - `id` (required) - Event ID
+
+#### Get All Contributions for Campaigns
+- **GET** `/contributions/campaigns`
+
+#### Get All Contributions for Events
+- **GET** `/contributions/events`
 
 ### 🎁 Tiers
 
@@ -190,7 +204,9 @@ http://localhost:3000
 ```json
 {
   "is_success": true,
-  "data": { ... }
+  "data": {
+    // Actual response data
+  }
 }
 ```
 

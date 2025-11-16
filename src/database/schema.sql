@@ -108,7 +108,9 @@ CREATE TABLE events (
     timezone VARCHAR(100) NOT NULL,
     location VARCHAR(255),
     visibility VARCHAR(50) NOT NULL DEFAULT 'public',
+    theme VARCHAR(255),
     target_amount DECIMAL(18, 2) NOT NULL,
+    amount_raised DECIMAL(18, 2) NOT NULL DEFAULT 0.00,
     reward_type reward_type NOT NULL DEFAULT 'none',
     capacity INTEGER,
     ticket_price DECIMAL(10, 2) DEFAULT 0.00,
@@ -138,6 +140,8 @@ CREATE TABLE contributions (
     campaign_id UUID REFERENCES campaigns(id) ON DELETE CASCADE,
     event_id UUID REFERENCES events(id) ON DELETE CASCADE,
     amount DECIMAL(18, 2) NOT NULL,
+    currency VARCHAR(10) NOT NULL DEFAULT 'USD',
+    tier VARCHAR(255),
     transaction_hash VARCHAR(255) UNIQUE NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     CHECK (campaign_id IS NOT NULL OR event_id IS NOT NULL)

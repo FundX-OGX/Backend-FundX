@@ -150,6 +150,7 @@ To make the database more robust, performant, and maintainable, the following Po
 | `location` | `VARCHAR(255)` | | The physical or virtual location of the event. |
 | `visibility` | `VARCHAR(50)` | `NOT NULL DEFAULT 'public'` | Visibility of the event (public, private). |
 | `target_amount` | `DECIMAL(18, 2)`| `NOT NULL` | The total funding target for the event. |
+| `amount_raised` | `DECIMAL(18, 2)`| `NOT NULL DEFAULT 0.00` | The current amount of funds raised for the event. |
 | `reward_type` | `reward_type` | `NOT NULL DEFAULT 'none'` | Type of reward for backers. |
 | `capacity` | `INTEGER` | | Maximum number of attendees. |
 | `ticket_price` | `DECIMAL(10, 2)`| `DEFAULT 0.00` | The price of a ticket if it's a paid event. |
@@ -181,6 +182,8 @@ To make the database more robust, performant, and maintainable, the following Po
 | `campaign_id` | `UUID` | `REFERENCES campaigns(id) ON DELETE CASCADE` | The campaign the contribution was made to (if any). |
 | `event_id` | `UUID` | `REFERENCES events(id) ON DELETE CASCADE` | The event the contribution was made to (if any). |
 | `amount` | `DECIMAL(18, 2)` | `NOT NULL` | The amount of the contribution. |
+| `currency` | `VARCHAR(10)` | `NOT NULL DEFAULT 'USD'` | The currency of the contribution. |
+| `tier` | `VARCHAR(255)` | | The contribution tier. |
 | `transaction_hash` | `VARCHAR(255)` | `UNIQUE NOT NULL` | The blockchain transaction hash. |
 | `created_at` | `TIMESTAMPTZ` | `NOT NULL DEFAULT NOW()` | Timestamp of when the contribution was made. |
 | | | `CHECK (campaign_id IS NOT NULL OR event_id IS NOT NULL)` | |

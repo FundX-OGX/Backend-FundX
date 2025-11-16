@@ -68,6 +68,11 @@ export class CreateEventDto {
   @IsOptional()
   visibility?: string;
 
+  @ApiProperty({ example: 'tech', required: false })
+  @IsString()
+  @IsOptional()
+  theme?: string;
+
   @ApiProperty({ example: 100000.0 })
   @IsNumber()
   target_amount: number;

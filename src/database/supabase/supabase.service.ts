@@ -67,6 +67,7 @@ export class SupabaseService implements IDatabaseService, OnModuleInit {
       p_timezone: event.timezone,
       p_location: event.location,
       p_visibility: event.visibility,
+      p_theme: event.theme,
       p_target_amount: event.target_amount,
       p_reward_type: event.reward_type,
       p_capacity: event.capacity,
@@ -177,17 +178,28 @@ export class SupabaseService implements IDatabaseService, OnModuleInit {
     return data;
   }
 
-  async updateCampaignCurrentAmount(id: string, amount: number): Promise<any> {
-    const { data, error } = await this.client
-      .from('campaigns')
-      .update({ amount_raised: amount })
-      .eq('id', id)
-      .select();
+  async createContributionAndupdateAmount(contribution: any): Promise<any> {
+    const { data, error } = await this.client.rpc(
+      'create_contribution_and_update_amount',
+      {
+        p_user_id: contribution.user_id,
+        p_campaign_id: contribution.campaign_id,
+        p_event_id: contribution.event_id,
+        p_amount: contribution.amount,
+        p_transaction_hash: contribution.transaction_hash,
+        p_currency: contribution.currency,
+        p_tier: contribution.tier,
+      },
+    );
+
     if (error) {
-      this.logger.error(error);
+      this.logger.error(
+        'Error calling create_contribution_and_update_amount RPC',
+        error,
+      );
       throw new Error(error.message);
     }
-    return data[0];
+    return { id: data };
   }
 
   // Image operations
@@ -355,18 +367,6 @@ export class SupabaseService implements IDatabaseService, OnModuleInit {
   }
 
   // Contribution operations
-  async createContribution(contribution: any): Promise<any> {
-    const { data, error } = await this.client
-      .from('contributions')
-      .insert([contribution])
-      .select();
-    if (error) {
-      this.logger.error(error);
-      throw new Error(error.message);
-    }
-    return data[0];
-  }
-
   async getContributionsByAddress(address: string): Promise<any[]> {
     // Assuming 'address' is the 'wallet_address' on the 'users' table.
     const { data: user, error: userError } = await this.client
@@ -473,6 +473,27 @@ export class SupabaseService implements IDatabaseService, OnModuleInit {
       .eq('id', eventId)
       .select()
       .single();
+    if (error) {
+      this.logger.error(error);
+      throw new Error(error.message);
+    }
+    return data;
+  }
+
+  async getAllContributions(): Promise<any[]> {
+    const { data, error } = await this.client.from('contributions').select('*');
+    if (error) {
+      this.logger.error(error);
+      throw new Error(error.message);
+    }
+    return data;
+  }
+
+  async getContributionsByEventId(eventId: string): Promise<any[]> {
+    const { data, error } = await this.client
+      .from('contributions')
+      .select('*')
+      .eq('event_id', eventId);
     if (error) {
       this.logger.error(error);
       throw new Error(error.message);

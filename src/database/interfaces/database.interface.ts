@@ -13,7 +13,6 @@ export interface IDatabaseService {
   getEventServicesByEventId(eventId: string): Promise<any[]>;
   getEventGalleryImagesByEventId(eventId: string): Promise<any[]>;
   updateEvent(eventId: string, updates: any): Promise<any>;
-  updateCampaignCurrentAmount(id: string, amount: number): Promise<any>;
   createImage(image: any): Promise<any>;
   getImagesByCampaignId(campaignId: string): Promise<any[]>;
   getStorySectionsByCampaignId(campaignId: string): Promise<any[]>;
@@ -36,9 +35,11 @@ export interface IDatabaseService {
     campaignId: string,
     status: string,
   ): Promise<any[]>;
-  createContribution(contribution: any): Promise<any>;
+  createContributionAndupdateAmount(contribution: any): Promise<any>;
+  getAllContributions(): Promise<any[]>;
   getContributionsByAddress(address: string): Promise<any[]>;
   getContributionsByCampaignId(campaignId: string): Promise<any[]>;
+  getContributionsByEventId(eventId: string): Promise<any[]>;
   createTier(tier: any): Promise<any>;
   createUser(user: any): Promise<any>;
   updateUser(walletAddress: string, updates: any): Promise<any>;

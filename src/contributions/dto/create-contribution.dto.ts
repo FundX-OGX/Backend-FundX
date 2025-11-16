@@ -1,14 +1,53 @@
-import { IsString, IsNumber, IsNotEmpty } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsNotEmpty,
+  IsOptional,
+  Validate,
+  ValidationArguments,
+  ValidatorConstraint,
+  ValidatorConstraintInterface,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+
+@ValidatorConstraint({ name: 'isOnlyOnePresent', async: false })
+export class IsOnlyOnePresentConstraint
+  implements ValidatorConstraintInterface
+{
+  validate(value: any, args: ValidationArguments) {
+    const [relatedPropertyName] = args.constraints;
+    const relatedValue = (args.object as any)[relatedPropertyName];
+    return (
+      (value === undefined && relatedValue !== undefined) ||
+      (value !== undefined && relatedValue === undefined)
+    );
+  }
+
+  defaultMessage(args: ValidationArguments) {
+    const [relatedPropertyName] = args.constraints;
+    return `Either ${args.property} or ${relatedPropertyName} must be present, but not both.`;
+  }
+}
 
 export class CreateContributionDto {
   @ApiProperty({
-    description: 'Campaign ID',
+    description: 'Campaign ID. Either campaignId or eventId must be present.',
     example: 'campaign-123',
+    required: false,
   })
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
-  campaignId: string;
+  @Validate(IsOnlyOnePresentConstraint, ['eventId'])
+  campaignId?: string;
+
+  @ApiProperty({
+    description: 'Event ID. Either campaignId or eventId must be present.',
+    example: 'event-123',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  eventId?: string;
 
   @ApiProperty({
     description: 'Contributor wallet address',
@@ -39,10 +78,11 @@ export class CreateContributionDto {
     description: 'Tier type',
     example: 'gold',
     enum: ['bronze', 'silver', 'gold', 'platinum'],
+    required: false,
   })
   @IsString()
-  @IsNotEmpty()
-  tierType: string;
+  @IsOptional()
+  tier?: string;
 
   @ApiProperty({
     description: 'Currency code',

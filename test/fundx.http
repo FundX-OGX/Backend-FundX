@@ -191,3 +191,50 @@ Content-Type: application/json
 
 ### Delete service by ID
 POST http://localhost:3000/services/service-1/delete
+
+###
+# Contributions
+###
+
+### Create a new contribution for a campaign
+POST http://localhost:3000/contributions
+Content-Type: application/json
+
+{
+  "campaignId": "YOUR_CAMPAIGN_ID",
+  "walletAddress": "0x1234567890abcdef1234567890abcdef12345678",
+  "amount": 100,
+  "currency": "USD",
+  "tier": "gold"
+}
+
+### Create a new contribution for an event
+POST http://localhost:3000/contributions
+Content-Type: application/json
+
+{
+  "eventId": "17f272f8-70e7-47f2-8f32-33d400584e62",
+  "walletAddress": "0x1234567890abcdef1234567890abcdef12345678",
+  "amount": 50,
+  "txHash": "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567892",
+  "currency": "USD",
+  "tier": "silver"
+}
+
+### Get all contributions
+GET http://localhost:3000/contributions
+
+### Get contributions by wallet address
+GET http://localhost:3000/contributions/wallet/0x1234567890abcdef1234567890abcdef12345678
+
+### Get contributions by campaign ID
+GET http://localhost:3000/contributions/campaign/YOUR_CAMPAIGN_ID
+
+### Get contributions by event ID
+GET http://localhost:3000/contributions/event/YOUR_EVENT_ID
+
+### Get all contributions for campaigns
+GET http://localhost:3000/contributions/campaigns
+
+### Get all contributions for events
+GET http://localhost:3000/contributions/events

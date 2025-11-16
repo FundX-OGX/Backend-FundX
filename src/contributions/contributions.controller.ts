@@ -3,109 +3,134 @@ import {
   Get,
   Post,
   Body,
-  Query,
+  Param,
   HttpCode,
   HttpStatus,
-  BadRequestException,
 } from '@nestjs/common';
 import {
   ApiTags,
   ApiOperation,
   ApiResponse,
-  ApiQuery,
-  ApiBody,
+  ApiParam,
 } from '@nestjs/swagger';
 import { ContributionsService } from './contributions.service';
 import { CreateContributionDto } from './dto/create-contribution.dto';
 
 @ApiTags('Contributions')
-@Controller()
+@Controller('contributions')
 export class ContributionsController {
   constructor(private readonly contributionsService: ContributionsService) {}
 
-  @Post('create-contribution')
-  @HttpCode(HttpStatus.OK)
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
-    summary: 'Create a new contribution and update campaign amount',
+    summary: 'Create a new contribution for a campaign or event',
   })
-  @ApiBody({ type: CreateContributionDto })
   @ApiResponse({
-    status: 200,
-    description: 'Contribution created and campaign updated successfully',
+    status: 201,
+    description: 'Contribution created successfully',
   })
   @ApiResponse({ status: 400, description: 'Validation error' })
-  @ApiResponse({ status: 404, description: 'Campaign not found' })
-  async createContribution(
-    @Body() createContributionDto: CreateContributionDto,
-  ) {
+  @ApiResponse({ status: 404, description: 'Campaign or Event not found' })
+  async createContribution(@Body() createContributionDto: CreateContributionDto) {
     try {
-      return await this.contributionsService.createContribution(
-        createContributionDto,
-      );
+      const data = await this.contributionsService.createContribution(createContributionDto);
+      return { is_success: true, data };
     } catch (error) {
-      return {
-        is_success: false,
-        error: error.message,
-      };
+      return { is_success: false, error: error.message };
     }
   }
 
-  @Get('contributions')
-  @ApiOperation({
-    summary: 'Get contributions by wallet address or contributors by campaign',
-  })
-  @ApiQuery({
-    name: 'address',
-    required: false,
-    type: String,
-    example: '0x1234567890abcdef',
-    description: 'Wallet address to get contributions for',
-  })
-  @ApiQuery({
-    name: 'campaign_id',
-    required: false,
-    type: String,
-    example: 'campaign-123',
-    description: 'Campaign ID to get contributors for',
-  })
+  @Get()
+  @ApiOperation({ summary: 'Get all contributions' })
   @ApiResponse({
     status: 200,
-    description: 'Contributions retrieved successfully',
+    description: 'A list of all contributions',
   })
+  async getAllContributions() {
+    try {
+      const data = await this.contributionsService.getAllContributions();
+      return { is_success: true, data };
+    } catch (error) {
+      return { is_success: false, error: error.message };
+    }
+  }
+
+  @Get('wallet/:address')
+  @ApiOperation({ summary: 'Get all contributions for a given wallet address' })
+  @ApiParam({ name: 'address', description: 'The wallet address of the contributor' })
   @ApiResponse({
-    status: 400,
-    description: 'Missing address or campaign_id parameter',
+    status: 200,
+    description: 'A list of contributions for the given wallet address',
   })
-  async getContributions(
-    @Query('address') address?: string,
-    @Query('campaign_id') campaignId?: string,
-  ) {
-    if (address) {
-      try {
-        return await this.contributionsService.getContributionsByAddress(
-          address,
-        );
-      } catch (error) {
-        return {
-          is_success: false,
-          error: error.message,
-        };
-      }
+  async getContributionsByWalletAddress(@Param('address') address: string) {
+    try {
+      const data = await this.contributionsService.getContributionsByWalletAddress(address);
+      return { is_success: true, data };
+    } catch (error) {
+      return { is_success: false, error: error.message };
     }
+  }
 
-    if (campaignId) {
-      try {
-        return await this.contributionsService.getAddressesByCampaign(
-          campaignId,
-        );
-      } catch (error) {
-        return {
-          is_success: false,
-          error: error.message,
-        };
-      }
+  @Get('campaign/:id')
+  @ApiOperation({ summary: 'Get all contributions for a given campaign' })
+  @ApiParam({ name: 'id', description: 'The ID of the campaign' })
+  @ApiResponse({
+    status: 200,
+    description: 'A list of contributions for the given campaign',
+  })
+  async getContributionsByCampaignId(@Param('id') id: string) {
+    try {
+      const data = await this.contributionsService.getContributionsByCampaignId(id);
+      return { is_success: true, data };
+    } catch (error) {
+      return { is_success: false, error: error.message };
     }
+  }
 
-    throw new BadRequestException('Missing address or campaign_id parameter');
+  @Get('event/:id')
+  @ApiOperation({ summary: 'Get all contributions for a given event' })
+  @ApiParam({ name: 'id', description: 'The ID of the event' })
+  @ApiResponse({
+    status: 200,
+    description: 'A list of contributions for the given event',
+  })
+  async getContributionsByEventId(@Param('id') id: string) {
+    try {
+      const data = await this.contributionsService.getContributionsByEventId(id);
+      return { is_success: true, data };
+    } catch (error) {
+      return { is_success: false, error: error.message };
+    }
+  }
+
+  @Get('campaigns')
+  @ApiOperation({ summary: 'Get all contributions made to campaigns' })
+  @ApiResponse({
+    status: 200,
+    description: 'A list of all contributions made to campaigns',
+  })
+  async getContributionsOfAllCampaigns() {
+    try {
+      const data = await this.contributionsService.getContributionsOfAllCampaigns();
+      return { is_success: true, data };
+    } catch (error) {
+      return { is_success: false, error: error.message };
+    }
+  }
+
+  @Get('events')
+  @ApiOperation({ summary: 'Get all contributions made to events' })
+  @ApiResponse({
+    status: 200,
+    description: 'A list of all contributions made to events',
+  })
+  async getContributionsOfAllEvents() {
+    try {
+      const data = await this.contributionsService.getContributionsOfAllEvents();
+      return { is_success: true, data };
+    } catch (error) {
+      return { is_success: false, error: error.message };
+    }
   }
 }
