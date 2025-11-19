@@ -55,7 +55,8 @@ export class ProfileService {
       email: createProfileDto.email,
       role: createProfileDto.role || UserRole.USER,
       bio: createProfileDto.bio,
-      avatar_url: createProfileDto.avatarUrl,
+      avatar_url:
+        createProfileDto.avatarUrl === '' ? null : createProfileDto.avatarUrl,
     };
 
     const data = await this.databaseService.createUser(newUser);
@@ -76,7 +77,8 @@ export class ProfileService {
       email: updateProfileDto.email,
       role: updateProfileDto.role,
       bio: updateProfileDto.bio,
-      avatar_url: updateProfileDto.avatarUrl,
+      avatar_url:
+        updateProfileDto.avatarUrl === '' ? null : updateProfileDto.avatarUrl,
     };
 
     // Remove undefined properties so they don't overwrite existing values with null
