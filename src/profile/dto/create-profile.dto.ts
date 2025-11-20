@@ -1,11 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsString,
-  IsOptional,
-  IsEmail,
-  IsUrl,
-  IsEnum,
-} from 'class-validator';
+import { IsString, IsOptional, IsEmail, IsUrl, IsEnum } from 'class-validator';
 import { IsUrlOrEmpty } from 'src/common/validators/is-url-or-empty.validator';
 
 export enum UserRole {

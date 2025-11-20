@@ -59,6 +59,7 @@ export class SupabaseService implements IDatabaseService, OnModuleInit {
   async createEventWithDetails(event: any): Promise<any> {
     const { data, error } = await this.client.rpc('create_event_with_details', {
       p_creator_address: event.creator_address,
+      p_on_chain_object_id: event.on_chain_object_id,
       p_name: event.name,
       p_description: event.description || null,
       p_start_time: event.start_time,

@@ -75,6 +75,8 @@ Content-Type: application/json
 
 {
   "creator_address": "0x1234567890abcdef1234567890abcdef12345678",
+  "on_chain_object_id": "0x1234567890abcdef1234567890abcdef12345678",
+  "theme": "default",
   "name": "My Tech Conference 2025",
   "description": "A conference about the future of technology.",
   "start_time": "2025-12-01T09:00:00Z",

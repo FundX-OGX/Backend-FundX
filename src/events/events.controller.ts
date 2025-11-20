@@ -1,7 +1,23 @@
-import { Controller, Post, Body, Get, Query, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Query,
+  Param,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
-import { ApiTags, ApiOperation, ApiBody, ApiResponse, ApiQuery, ApiParam } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiBody,
+  ApiResponse,
+  ApiQuery,
+  ApiParam,
+} from '@nestjs/swagger';
 
 @ApiTags('Events')
 @Controller('events')
@@ -81,7 +97,12 @@ export class EventsController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get an event by ID' })
-  @ApiParam({ name: 'id', required: true, type: String, example: 'a1b2c3d4-e5f6-7890-1234-567890abcdef' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: String,
+    example: 'a1b2c3d4-e5f6-7890-1234-567890abcdef',
+  })
   @ApiResponse({
     status: 200,
     description: 'Event retrieved successfully',

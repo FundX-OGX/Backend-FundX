@@ -115,6 +115,7 @@ CREATE TABLE events (
     capacity INTEGER,
     ticket_price DECIMAL(10, 2) DEFAULT 0.00,
     status event_status NOT NULL DEFAULT 'pending',
+    on_chain_object_id VARCHAR(255) UNIQUE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

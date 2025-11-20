@@ -1,8 +1,22 @@
-import { Controller, Get, Post, Body, Param, HttpCode, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { ServicesService } from './services.service';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
-import { ApiTags, ApiOperation, ApiBody, ApiResponse, ApiParam } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiBody,
+  ApiResponse,
+  ApiParam,
+} from '@nestjs/swagger';
 
 @ApiTags('Services')
 @Controller('services')
@@ -85,7 +99,12 @@ export class ServicesController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get a service by ID' })
-  @ApiParam({ name: 'id', required: true, type: String, example: 'venue-conference-hall' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: String,
+    example: 'venue-conference-hall',
+  })
   @ApiResponse({
     status: 200,
     description: 'Service retrieved successfully',
@@ -110,14 +129,20 @@ export class ServicesController {
 
   @Post(':id/update')
   @ApiOperation({ summary: 'Update a service by ID' })
-  @ApiParam({ name: 'id', required: true, type: String, example: 'venue-conference-hall' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: String,
+    example: 'venue-conference-hall',
+  })
   @ApiBody({
     type: UpdateServiceDto,
     examples: {
       'update service': {
         value: {
           name: 'Conference Hall Rental (3 days)',
-          description: 'Rental of the main conference hall for the entire 3-day event.',
+          description:
+            'Rental of the main conference hall for the entire 3-day event.',
           base_cost: 55000,
           popular: true,
         },
@@ -133,7 +158,8 @@ export class ServicesController {
         data: {
           id: 'venue-conference-hall',
           name: 'Conference Hall Rental (3 days)',
-          description: 'Rental of the main conference hall for the entire 3-day event.',
+          description:
+            'Rental of the main conference hall for the entire 3-day event.',
           base_cost: 55000,
           category: 'venue',
           popular: true,
@@ -148,7 +174,12 @@ export class ServicesController {
 
   @Post(':id/delete')
   @ApiOperation({ summary: 'Delete a service by ID' })
-  @ApiParam({ name: 'id', required: true, type: String, example: 'venue-conference-hall' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: String,
+    example: 'venue-conference-hall',
+  })
   @ApiResponse({
     status: 200,
     description: 'Service deleted successfully',
@@ -158,7 +189,8 @@ export class ServicesController {
         data: {
           id: 'venue-conference-hall',
           name: 'Conference Hall Rental (3 days)',
-          description: 'Rental of the main conference hall for the entire 3-day event.',
+          description:
+            'Rental of the main conference hall for the entire 3-day event.',
           base_cost: 55000,
           category: 'venue',
           popular: true,

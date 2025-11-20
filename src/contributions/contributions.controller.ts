@@ -33,7 +33,8 @@ export class ContributionsController {
           campaign_id: 'campaign-123',
           event_id: null,
           amount: 100,
-          transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+          transaction_hash:
+            '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
           currency: 'SUI',
           tier: 'gold',
           created_at: '2023-10-27T10:00:00Z',
@@ -70,7 +71,8 @@ export class ContributionsController {
             campaign_id: 'campaign-123',
             event_id: null,
             amount: 100,
-            transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+            transaction_hash:
+              '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
             currency: 'SUI',
             tier: 'gold',
             created_at: '2023-10-27T10:00:00Z',
@@ -106,7 +108,8 @@ export class ContributionsController {
             campaign_id: 'campaign-123',
             event_id: null,
             amount: 100,
-            transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+            transaction_hash:
+              '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
             currency: 'SUI',
             tier: 'gold',
             created_at: '2023-10-27T10:00:00Z',
@@ -141,7 +144,8 @@ export class ContributionsController {
             campaign_id: 'campaign-123',
             event_id: null,
             amount: 100,
-            transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+            transaction_hash:
+              '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
             currency: 'SUI',
             tier: 'gold',
             created_at: '2023-10-27T10:00:00Z',
@@ -174,7 +178,8 @@ export class ContributionsController {
             campaign_id: null,
             event_id: 'event-123',
             amount: 100,
-            transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+            transaction_hash:
+              '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
             currency: 'SUI',
             tier: 'gold',
             created_at: '2023-10-27T10:00:00Z',
@@ -206,7 +211,8 @@ export class ContributionsController {
             campaign_id: 'campaign-123',
             event_id: null,
             amount: 100,
-            transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+            transaction_hash:
+              '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
             currency: 'SUI',
             tier: 'gold',
             created_at: '2023-10-27T10:00:00Z',
@@ -238,7 +244,8 @@ export class ContributionsController {
             campaign_id: null,
             event_id: 'event-123',
             amount: 100,
-            transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+            transaction_hash:
+              '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
             currency: 'SUI',
             tier: 'gold',
             created_at: '2023-10-27T10:00:00Z',

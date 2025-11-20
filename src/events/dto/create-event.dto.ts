@@ -24,6 +24,15 @@ export enum EventStatus {
 
 export class CreateEventDto {
   @ApiProperty({
+    example: '0x1234567890abcdef',
+    required: false,
+    description: 'The on-chain object ID of the event',
+  })
+  @IsString()
+  @IsOptional()
+  on_chain_object_id?: string;
+
+  @ApiProperty({
     description: 'Creator wallet address',
     example: '0x0000000000000000000000000000000000000000',
   })

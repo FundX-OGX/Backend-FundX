@@ -37,7 +37,10 @@ export class ContributionsService {
       tier,
     };
 
-    const data = await this.databaseService.createContributionAndupdateAmount(contribution);
+    const data =
+      await this.databaseService.createContributionAndupdateAmount(
+        contribution,
+      );
     return {
       is_success: true,
       data: data,
@@ -61,7 +64,8 @@ export class ContributionsService {
   }
 
   async getContributionsByCampaignId(campaignId: string) {
-    const data = await this.databaseService.getContributionsByCampaignId(campaignId);
+    const data =
+      await this.databaseService.getContributionsByCampaignId(campaignId);
     return {
       is_success: true,
       data: data,

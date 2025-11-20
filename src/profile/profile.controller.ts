@@ -256,7 +256,8 @@ export class ProfileController {
             creator_id: '00000000-0000-0000-0000-000000000000',
             on_chain_object_id: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b',
             title: 'Innovate for a Better Tomorrow',
-            short_description: 'Supporting groundbreaking projects in sustainable technology.',
+            short_description:
+              'Supporting groundbreaking projects in sustainable technology.',
             category: 'technology',
             goal_amount: 50000,
             current_amount: 15000,
@@ -308,7 +309,8 @@ export class ProfileController {
             campaign_id: 'campaign-123',
             event_id: null,
             amount: 100,
-            transaction_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
+            transaction_hash:
+              '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890',
             currency: 'SUI',
             tier: 'gold',
             created_at: '2023-10-27T10:00:00Z',

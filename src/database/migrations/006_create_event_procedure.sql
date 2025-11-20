@@ -13,6 +13,7 @@ CREATE OR REPLACE FUNCTION create_event_with_details(
     p_reward_type reward_type,
     p_capacity INTEGER,
     p_ticket_price DECIMAL,
+    p_on_chain_object_id VARCHAR,
     p_milestones JSONB,
     p_services JSONB,
     p_gallery_images JSONB
@@ -28,11 +29,11 @@ BEGIN
     INSERT INTO events (
         creator_address, name, description, start_time, end_time, funding_deadline,
         timezone, location, visibility, theme, target_amount, reward_type, capacity,
-        ticket_price, status
+        ticket_price, on_chain_object_id, status
     ) VALUES (
         p_creator_address, p_name, p_description, p_start_time, p_end_time, p_funding_deadline,
         p_timezone, p_location, p_visibility, p_theme, p_target_amount, p_reward_type, p_capacity,
-        p_ticket_price, 'pending'
+        p_ticket_price, p_on_chain_object_id, 'pending'
     ) RETURNING id INTO v_event_id;
 
     -- Insert milestones
